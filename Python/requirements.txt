@@ -1,0 +1,6 @@
+opencv-python
+cvzone
+tensorflow
+pyserial
+numpy
+tf_keras
