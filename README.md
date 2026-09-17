@@ -67,27 +67,11 @@ Nenhuma parte funciona sozinha do jeito esperado — as três precisam estar lig
 
 Este é o ciclo completo, do carrinho chegando até ele sair da inspeção:
 
-```
-①  Carrinho entra na esteira, sensor infravermelho detecta a presença
-        ↓
-②  Arduino TRAVA a esteira e avisa o Python: "cheguei!" (envia 'S' pela Serial)
-        ↓
-③  Python espera 1,5s (o carrinho parar de balançar) e pede uma foto ao ESP32-CAM
-        ↓
-④  A foto é enviada ao modelo de IA (treinado no Teachable Machine)
-        ↓
-⑤  A IA responde: APROVADO ou REJEITADO
-        ↓
-⑥  Python manda o resultado ao Arduino ('G' = aprovado, 'R' = rejeitado)
-        ↓
-⑦  Arduino acende o LED verde (aprovado) ou pisca o vermelho + buzina (rejeitado)
-        ↓
-⑧  Alguém retira o carrinho da esteira
-        ↓
-⑨  Sensor detecta que o carrinho saiu → Arduino avisa o Python ('X')
-        ↓
-⑩  Python confirma de volta ('X') → Arduino libera a esteira → ciclo reinicia
-```
+<div align="center">
+
+![Fluxo de funcionamento da esteira de inspeção com IA](Asserts/como-sistema-pensa.png)
+
+</div>
 
 Se o sistema for **desligado no controle remoto** a qualquer momento, o Arduino manda um sinal de reset total (`Z`) e o Python descarta qualquer análise em andamento.
 
