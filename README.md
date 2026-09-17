@@ -150,7 +150,7 @@ Montadora_Carro_Ia/
 - [ ] 3x LEDs (verde, vermelho, azul)
 - [ ] 3x Resistores de 220Ω
 - [ ] Protoboard + jumpers macho/macho e macho/fêmea
-- [ ] Fonte externa para o motor de passo (recomendado)
+- [ ] Fonte externa para o motor de passo (recomendado — veja o porquê [logo abaixo](#-ligações-elétricas-arduino))
 
 ### Para a visão (câmera)
 
@@ -184,6 +184,18 @@ Montadora_Carro_Ia/
 
 > ⚠️ Todos os GNDs (Arduino, driver ULN2003, sensor, receptor IV e alimentação externa do motor) precisam estar interligados.
 
+> 💡 **Dica importante: alimente o motor com uma fonte externa, não pelo pino 5V do Arduino**
+>
+> O motor de passo 28BYJ-48 pode consumir bem mais corrente do que os cerca de 200 mA que o pino 5V do Arduino Uno consegue fornecer com segurança — principalmente quando ele está girando ou segurando a esteira parada com torque. Se você alimentar o driver ULN2003 direto pelo 5V do Arduino, o regulador de tensão da placa esquenta, o Arduino pode reiniciar sozinho no meio do ciclo, o vídeo/Serial pode "engasgar", e a longo prazo isso desgasta o componente.
+>
+> **Como ligar a fonte externa:**
+> 1. Use uma fonte de **5V** com pelo menos **1A** de capacidade — por exemplo, um carregador de celular USB antigo (ligando o fio + e - que saem dele), uma fonte de bancada, ou um porta-pilhas 4x AA/AAA (~5V).
+> 2. Ligue o **positivo (+)** dessa fonte no terminal de alimentação **"+"** da placa driver ULN2003 (esse terminal fica ao lado dos pinos IN1–IN4, é diferente deles — **não** é onde entram os fios de sinal do Arduino).
+> 3. Ligue o **negativo (-)** dessa fonte no terminal **"-"** da mesma placa **e também** em um pino **GND do Arduino**, com um fio extra — isso cria o "GND comum" mencionado no aviso acima. Sem esse GND compartilhado, os sinais IN1–IN4 do Arduino não conseguem controlar o motor corretamente.
+> 4. O pino **5V do Arduino** fica livre para alimentar só os sensores e os LEDs (que consomem bem pouca corrente), sem risco de sobrecarga.
+>
+> Se o motor só vai girar por pouco tempo e em testes de bancada, alimentá-lo pelo 5V do Arduino até funciona — mas para a maquete rodando por mais tempo, a fonte externa é o jeito certo de evitar resets aleatórios e proteger a placa.
+
 ---
 
 ## 🏗️ Montando a Maquete Física
@@ -194,7 +206,7 @@ Montadora_Carro_Ia/
 4. **Estrutura da câmera:** monte um suporte/caixa acima da estação de inspeção e fixe o ESP32-CAM olhando de cima para baixo, enquadrando bem o ponto de parada.
 5. **Painel de indicação:** posicione os LEDs e o buzzer em um local visível.
 6. **Receptor IV:** deixe-o com visada livre, sem obstáculos.
-7. **Eletrônica:** monte o Arduino e o driver ULN2003 conforme a tabela de ligações, escondidos dentro da base.
+7. **Eletrônica:** monte o Arduino e o driver ULN2003 conforme a tabela de ligações, escondidos dentro da base — e já deixe a fonte externa do motor (veja a dica acima) com fácil acesso para ligar/desligar.
 8. **Cabos:** leve o cabo USB do Arduino até o notebook e alimente o ESP32-CAM.
 
 ---
@@ -595,6 +607,15 @@ Pressione o botão **RESET** da placa ESP32-CAM-MD (ou do módulo) assim que a I
 <br>
 
 Revise a fiação do driver ULN2003 contra a [tabela de ligações](#-ligações-elétricas-arduino) e confirme a alimentação do motor.
+
+</details>
+
+<details>
+<summary>Arduino reinicia sozinho ou trava quando a esteira liga</summary>
+
+<br>
+
+Sinal clássico de que o motor está sendo alimentado direto pelo pino 5V do Arduino e puxando corrente demais. Ligue o motor/driver ULN2003 em uma fonte externa de 5V, como explicado na [dica da seção de Ligações Elétricas](#-ligações-elétricas-arduino), lembrando de manter o GND comum entre a fonte e o Arduino.
 
 </details>
 
