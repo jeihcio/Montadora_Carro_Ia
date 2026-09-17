@@ -10,7 +10,7 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-Teachable%20Machine-FF6F00?logo=tensorflow&logoColor=white)
 ![Status](https://img.shields.io/badge/status-funcional-brightgreen)
 
-![Foto da maquete física do projeto](Asserts/maquete-fisica.png)
+![Foto da maquete física do projeto](Asserts/Imagens/maquete-fisica.png)
 
 </div>
 
@@ -69,7 +69,7 @@ Este é o ciclo completo, do carrinho chegando até ele sair da inspeção:
 
 <div align="center">
 
-![Fluxo de funcionamento da esteira de inspeção com IA](Asserts/como-sistema-pensa.png)
+![Fluxo de funcionamento da esteira de inspeção com IA](Asserts/Imagens/como-sistema-pensa.png)
 
 </div>
 
@@ -149,7 +149,7 @@ Montadora_Carro_Ia/
 - [ ] Estrutura vertical para sustentar o ESP32-CAM acima da esteira
 - [ ] Carrinhos de brinquedo em miniatura
 
-![Componentes utilizados no projeto](Asserts/componentes-arduino.png)
+![Componentes utilizados no projeto](Asserts/Imagens/componentes-arduino.png)
 
 ---
 
@@ -181,6 +181,12 @@ Montadora_Carro_Ia/
 > 4. O pino **5V do Arduino** fica livre para alimentar só os sensores e os LEDs (que consomem bem pouca corrente), sem risco de sobrecarga.
 >
 > Se o motor só vai girar por pouco tempo e em testes de bancada, alimentá-lo pelo 5V do Arduino até funciona — mas para a maquete rodando por mais tempo, a fonte externa é o jeito certo de evitar resets aleatórios e proteger a placa.
+
+<div align="center">
+
+![Foto da maquete física do projeto](Asserts/Imagens/maquete-fisica.png)
+
+</div>
 
 ---
 
