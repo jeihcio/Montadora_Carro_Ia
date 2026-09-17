@@ -149,6 +149,8 @@ Montadora_Carro_Ia/
 - [ ] Estrutura vertical para sustentar o ESP32-CAM acima da esteira
 - [ ] Carrinhos de brinquedo em miniatura
 
+![Componentes utilizados no projeto](Asserts/componentes-arduino.png)
+
 ---
 
 ## 🔌 Ligações Elétricas (Arduino)
