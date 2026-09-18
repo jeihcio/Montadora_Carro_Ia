@@ -182,12 +182,6 @@ Montadora_Carro_Ia/
 >
 > Se o motor só vai girar por pouco tempo e em testes de bancada, alimentá-lo pelo 5V do Arduino até funciona — mas para a maquete rodando por mais tempo, a fonte externa é o jeito certo de evitar resets aleatórios e proteger a placa.
 
-<div align="center">
-
-![Foto da maquete física do projeto](Asserts/Imagens/maquete-fisica.png)
-
-</div>
-
 ---
 
 ## 🏗️ Montando a Maquete Física
